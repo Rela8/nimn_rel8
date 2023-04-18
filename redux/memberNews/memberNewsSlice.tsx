@@ -29,11 +29,15 @@ const MemberNews = createSlice({
             state.status='success'
             state.news = payload
         })
-        addCase(getMemberNews.rejected,(state,action)=>{
+        addCase(getMemberNews.rejected,(state,action:any)=>{
             //
             state.status='error'
             state.errorMessage='Please Check your internet'
             console.log({'from member news slice':action.payload})
+
+            if(action.payload?.response?.data?.message){
+                state.errorMessage ='overdue_payment'
+            }
         })
     }
 })

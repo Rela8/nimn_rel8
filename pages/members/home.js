@@ -36,7 +36,7 @@ export default function Home(props){
   const route = useRouter()
     const dispatch = useAppDispatch()
     const { status,events} = useAppSelector(selectMemberEvent)
-    const {news,status:news_status} = useAppSelector(selectMemberNews)
+    const {news,status:news_status,errorMessage:newsErrMessage} = useAppSelector(selectMemberNews)
     const { status:meeting_status,meetings,message:meeting_message } =useAppSelector(selectMeetings) 
     // const [images,setImages] = useState([])
     const {status:pub_status,publication} = useAppSelector(selectmemberPublication)
@@ -54,7 +54,14 @@ export default function Home(props){
     const {data:images} = useQuery('images_preview',getImagesForLayout,{
       'refetchOnWindowFocus':false
     })
-
+    useEffect(()=>{
+      if(news_status==='error'){
+        if(newsErrMessage==='overdue_payment'){
+          notify('You have out standing payment in your account','error')
+          route.push('/members/dues')
+        }
+      }
+    },[news_status])  
     useEffect(()=>{
       dispatch(getMembersEvent({}))
       dispatch(getMeetings({}))
