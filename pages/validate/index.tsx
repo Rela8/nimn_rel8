@@ -34,9 +34,11 @@ const ValidateUser= ()=>{
             return 
         }
         setLoading(true)
-        const resp = await axios.post(`/tenant/auth/ManageMemberValidation/`,{'MEMBERSHIP_NO':data})
-        const resp_data:ValidateResponseType =resp.data.data
-        // setFoundMember(resp.data.data)
+        try{
+            const resp = await axios.post(`/tenant/auth/ManageMemberValidation/`,{'MEMBERSHIP_NO':data})
+            const resp_data:ValidateResponseType =resp.data.data
+                 // setFoundMember(resp.data.data)
+  
         setLoading(false)
         if(resp_data[0].isValid==false){
             notify('Member Not Found','error')
@@ -45,6 +47,14 @@ const ValidateUser= ()=>{
             notify('Please hold on','success')
             localStorage.setItem('validatedUser',JSON.stringify(resp_data[0].user))
             route.push('/validate/create')
+        }
+        }
+        catch(err:any){
+            console.log(err)
+        setLoading(false)
+
+            notify('Member Not Found Please Check Your Member ID','error')
+
         }
     }
     return (
