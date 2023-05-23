@@ -137,8 +137,8 @@ onChange={(e)=>{
 <div>
 <br />
 <InputFieldView title="Name" value={member?.full_name}/>
-<br />
-<InputFieldView title="Email" value={member.email}/>
+{/* <br />
+<InputFieldView title="Email" value={member.email}/> */}
 <br />
 {
     member.member_info.length!==0?
@@ -149,8 +149,9 @@ onChange={(e)=>{
 
         <div style={GRIDSTYLE}>
             {
-                member.member_info.map((data,index)=>(
+                member.member_info.filter((value)=>value.name.toLowerCase()!='gsm').map((data,index)=>(
                     <div key={index}>
+                        {/* {data.name} */}
                         <InputFieldView title={data.name} value={data.value}/>
                         <br />
                     </div>
