@@ -38,6 +38,7 @@ const MeetDisplay = ({event}:Prop)=>{
     },
   })
     const dispatch = useAppDispatch()
+    console.log({event})
     return (
         <div>
             {
@@ -116,8 +117,12 @@ const MeetDisplay = ({event}:Prop)=>{
                     <p><strong>Details</strong></p>
                 <div style={{'display':'flex','justifyContent':'center','alignItems':'center'}}>
                     <img src={ClipImage.src} alt="" />
-                    
-                    <a href={''} style={{'margin':'0 10px'}}><strong>Get Event Document</strong></a>
+                    <a href={
+                    // @ts-ignore 
+                        event.event_docs?event.event_docs:'#'
+                    } 
+                    target="_blank"
+                    style={{'margin':'0 10px'}} rel="noreferrer"><strong>Get Event Document</strong></a>
                 </div>
                 </div>
 

@@ -36,6 +36,7 @@ const EventMeetDisplay = ({meeting}:Prop)=>{
 
         }
     })
+    console.log({meeting})
     return (
         <div>
             {
