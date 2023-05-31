@@ -116,7 +116,9 @@ const EventMeetDisplay = ({meeting}:Prop)=>{
                             <TiLocation/>
                             <p> {meeting.addresse.includes('https')?'Remote':'On Site'}: {
                                     meeting.addresse.includes('https')?
-                                    <CustomBtn style={{'padding':'.3rem'}}>Join</CustomBtn>:
+                                    <CustomBtn style={{'padding':'.3rem'}} onClick={e=>{
+                                        window.open( meeting.addresse,'_blank')
+                                    }}>Join</CustomBtn>:
                                     <>{ meeting.addresse}</>
                                 } </p>
                         </div>

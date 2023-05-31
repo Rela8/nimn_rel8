@@ -143,7 +143,9 @@ const MeetDisplay = ({event}:Prop)=>{
                             event.event_access.has_paid?
                             <p>
                                 {event.event_access.link.includes('https')?
-                                <CustomBtn style={{'padding':'.3rem'}} onClick={e=>location.href=event.event_access.link}>Join Now</CustomBtn>
+                                <CustomBtn style={{'padding':'.3rem'}} onClick={e=>{
+                                    location.href=event.event_access.link
+                                }}>Join Now</CustomBtn>
                                 :event.event_access.link}
                             </p>:
                             <p>You need to pay to access the event info</p>
