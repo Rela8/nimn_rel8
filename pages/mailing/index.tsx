@@ -94,7 +94,7 @@ const ActivateAccount:NextPage = ()=>{
          
         
         <CustomBtn style={{'padding':'1rem','width':'150px','borderRadius':'10px','margin':'0 auto'}}
-          onClick={()=>handleRoute('/')}
+          onClick={()=>showLogin()}
         >Try to Sign In</CustomBtn>
       </div>:''
       }
