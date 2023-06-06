@@ -11,13 +11,14 @@ import useToast from "../../hooks/useToast"
 
 const ActivateAccount:NextPage = ()=>{
     const route = useRouter()
-    const {uidb64, token} = route.query
+    const {uidb64, token,user_type} = route.query
     const {notify} = useToast()
     const [status,setStatus] = useState<'loading'|'error'|'okay'|'idle'>('idle')
     const handleRoute = (value:string)=>{
       //
       route.push(value)
     }
+          //
   
     const handleValidate = async( )=>{
         //
@@ -38,6 +39,19 @@ const ActivateAccount:NextPage = ()=>{
         }
       }
 
+      const showLogin =()=>{
+        const params:any = new Proxy(new URLSearchParams(window.location.search), {
+          get: (searchParams, prop:any) => searchParams.get(prop),
+        });
+
+
+        if(params.user_type==='prospective_members'){
+          handleRoute('/prospective')
+        }else{
+          handleRoute('/')
+        }
+      }
+
 
       return (
         <div style={{'backgroundColor':'#dcdcdc2e','height':'100vh'}}>
@@ -54,11 +68,15 @@ const ActivateAccount:NextPage = ()=>{
 
               >Your Account Has Been<span style={{'color':'#015595'}}> Verified</span></h1>
               <br />
-              <p style={{'color':'#1c1e21'}}>Login to get to meet other members!!</p> 
+              {/* <p style={{'color':'#1c1e21'}}>Login to get to meet other members!!</p>  */}
               <br />
               <CustomBtn style={{'padding':'1rem','width':'150px','borderRadius':'10px','margin':'0 auto'}}
-                onClick={()=>handleRoute('/')}
-              >Explore</CustomBtn>
+                onClick={()=>{
+                  showLogin()
+                }}
+              >
+              Explore
+                </CustomBtn>
             </div>:
             ''
         }
