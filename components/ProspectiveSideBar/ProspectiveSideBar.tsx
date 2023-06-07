@@ -26,7 +26,7 @@ const ProspectiveSideBar= ()=>{
                     e.preventDefault()
                     if(window.confirm('Are sure you want to log out')){
                         localStorage.clear()
-                        router.push('/prospective/')
+                        router.push('/prospective')
                     }
                 }}>Log Out</a></li>
             </ul>  
