@@ -147,9 +147,9 @@ const FormTwo = ({setStep}:{setStep:any})=>{
 
                     <CustomButton styleType="sec" style={{'width':'150px'}} onClick={e=>{
                         e.preventDefault()
-                        append({'name':'enter a file name',})
+                        append({'name':'enter a file name you want to add',})
                     }}>
-                        Append
+                        add more information
                     </CustomButton>
                     <br />
                     <br />
@@ -253,13 +253,13 @@ const Home = ()=>{
                             <div key={index} style={{'display':'grid','gridTemplateColumns':'1fr 1fr','gap':'20px','margin':'10px 0'}}>
                                 <InputWithLabel 
                                 isShowLabel={true}
-                                label={'Name'}
+                                label={''}
                                 register={register(`data.${index}.name`)}
                                 />
 
                                 <InputWithLabel 
                                 isShowLabel={true}
-                                label={'Value'}
+                                label={''}
                                 register={register(`data.${index}.value`)}
                                 />
                             </div>        
@@ -267,9 +267,9 @@ const Home = ()=>{
                     }
                     <CustomButton styleType="sec" style={{'width':'150px'}} onClick={e=>{
                         e.preventDefault()
-                        append({'name':'empty name','value':'empty name'})
+                        append({'name':'this is where title go','value':'this is where the value go'})
                     }}>
-                        Append
+                        If you have more info add
                     </CustomButton>
                     <br />
                    </div>
