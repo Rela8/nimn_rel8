@@ -27,7 +27,7 @@ const schema = yup.object().shape({
     email: yup.string().required('Email is required').email('Email is invalid'),
     full_name:yup.string().required('Full name is required'),
     telephone_number:yup.string().required('Telephone name is required').min(11,'must be up to 11 digits').max(11,'must be up to 11 digits'),
-    addresse:yup.string().required('Addresse is required'),
+    addresse:yup.string().required('Address is required'),
     password: yup.string().required('Password is required').min(2, 'Password must be at least 2 characters'),
   });
 export type PropectiveCreate ={
@@ -104,7 +104,7 @@ const Page:NextPage =()=>{
                 errorMessage={errors.telephone_number?.message}
                 />
                                 <InputWithLabel 
-                label="Addresse"
+                label="Address"
                 Icon={<Person color='disabled'  fontSize={'medium'}/>}
                 register={register('addresse')}
                 type="text"
